@@ -17,8 +17,9 @@ class App extends React.Component {
                 isDisabled: true,
             })
         }
+
         this.setState({
-            counter: this.state.counter + 1
+            counter:++this.state.counter
         })
     }
     resetCounter = () => {
