@@ -8,19 +8,32 @@ class Controls extends React.Component {
                 isDisabled: this.props.isDisabled,
                 onFunc: this.props.incrementCounter,
                 disabled: 'DISABLED',
-                counter:this.props.counter
+                counter: this.props.counter
             },
             {
                 title: 'RESET',
                 isDisabled: this.props.counter === this.props.minVal ? true : false,
                 onFunc: this.props.resetCounter,
                 disabled: 'DISABLED'
+            },
+            {
+                title: 'SET',
+                onFunc: this.props.setFunc,
+                isDisabled: this.props.counter > this.props.minVal ? true : false,
+                disabled: 'DISABLED'
+
             }
         ]
         return (
-            <div className="Buttons">
-                <Btn {...this.props} button={buttons[0]}/>
-                <Btn {...this.props} button={buttons[1]}/>
+            <div >
+                {this.props.setVisibleSettings ?
+                    <div>
+                        <button className="SET" onClick={() => buttons[2].onFunc(false)}>SET</button>
+                    </div> :
+                    <div className="Buttons"><Btn {...this.props} button={buttons[0]}/>
+                        <Btn {...this.props} button={buttons[1]}/>
+                        <Btn {...this.props} button={buttons[2]}/></div>
+                }
             </div>
         )
     }

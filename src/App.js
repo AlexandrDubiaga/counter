@@ -8,11 +8,12 @@ class App extends React.Component {
         counter: 0,
         isDisabled: false,
         maxVal: 5,
-        minVal: 0
+        minVal: 0,
+        setVisibleSettings:false
     }
 
     incrementCounter = () => {
-        if(this.state.counter===4){
+        if(this.state.counter===this.state.maxVal-1){
             this.setState({
                 isDisabled: true,
             })
@@ -22,22 +23,35 @@ class App extends React.Component {
             counter:++this.state.counter
         })
     }
+    changeStartMaxValue=(obj)=>{
+        this.setState({
+            maxVal: parseInt(obj.maxVal),
+            minVal: parseInt(obj.minVal)
+        })
+    }
     resetCounter = () => {
         this.setState({
             counter: 0,
             isDisabled: false
         })
     }
+   setFunc = (val) => {
+        this.setState({
+            setVisibleSettings:val,
+            counter:this.state.minVal
+        })
+    }
+
 
     render() {
         return (
             <div className="App">
                 <div className="Wrapper">
                     <div className="Display">
-                        <Display counter={this.state.counter}/>
+                        <Display changeStartMaxValue={this.changeStartMaxValue} setVisibleSettings={this.state.setVisibleSettings} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}/>
                     </div>
                     <div>
-                        <Controls className="Controls" counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}
+                        <Controls className="Controls" setVisibleSettings={this.state.setVisibleSettings} setFunc={this.setFunc} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}
                                   isDisabled={this.state.isDisabled} incrementCounter={this.incrementCounter}
                                   resetCounter={this.resetCounter}/>
                     </div>
