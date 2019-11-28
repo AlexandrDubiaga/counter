@@ -32,7 +32,8 @@ class App extends React.Component {
     resetCounter = () => {
         this.setState({
             counter: 0,
-            isDisabled: false
+            isDisabled: false,
+            minVal:0
         })
     }
    setFunc = (val) => {
