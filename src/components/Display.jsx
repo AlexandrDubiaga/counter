@@ -27,7 +27,6 @@ class Display extends React.Component {
             this.setState({error: 'Min != Max', errorCheckMax: true})
             this.props.disableSetIfError(true, false)
         } else {
-
             this.setState({errorCheckMax: false, errorCheckMin: false})
             this.props.disableSetIfError(false, false)
             this.props.changeStartMaxValue(obj);
@@ -48,12 +47,12 @@ class Display extends React.Component {
                                     <tr>
                                         <td>
                                             <span
-                                                className="errorInInputs">{this.state.errorCheckMax ? this.state.error : 'Max value:'}</span>
+                                                className={this.state.errorCheckMax?'errorInInputs':'OkInInputs'}>{this.state.errorCheckMax ? this.state.error : 'Max value:'}</span>
                                             <input className={this.state.errorCheckMax ? 'errorInput' : ''}
                                                    type="number"
                                                    value={this.props.maxVal}/></td>
                                         <td><span
-                                            className="errorInInputs">{this.state.errorCheckMin ? this.state.error : 'Start value:'}</span>
+                                            className={this.state.errorCheckMin?'errorInInputs':'OkInInputs'}>{this.state.errorCheckMin ? this.state.error : 'Start value:'}</span>
                                             <input className={this.state.errorCheckMin ? 'errorInput' : ''}
                                                    type="number" value={this.props.minVal}/></td>
                                     </tr>

@@ -14,7 +14,7 @@ class App extends React.Component {
     }
 
     incrementCounter = () => {
-        if(this.state.counter===this.state.maxVal-1){
+        if(this.state.counter===this.state.maxVal){
             this.setState({
                 isDisabled: true,
             })

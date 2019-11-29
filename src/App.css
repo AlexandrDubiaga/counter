@@ -67,6 +67,12 @@ input{
     color: red;
     height: 20px;
 }
+
+.OkInInputs{
+    font-size: 50px;
+    color: black;
+    height: 20px;
+}
 .tableInDisplay td{
     width: 300px;
 
