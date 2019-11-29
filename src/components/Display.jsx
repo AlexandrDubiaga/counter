@@ -28,8 +28,7 @@ class Display extends React.Component {
             this.props.disableSetIfError(true, false)
         } else {
 
-            this.setState({errorCheckMax: false})
-            this.setState({errorCheckMin: false})
+            this.setState({errorCheckMax: false, errorCheckMin: false})
             this.props.disableSetIfError(false, false)
             this.props.changeStartMaxValue(obj);
         }
@@ -45,10 +44,20 @@ class Display extends React.Component {
                     {this.props.setVisibleSettings ?
                         <div>
                             <form onChange={this.changeValuesInputs}>
-                                Max value: <input className={this.state.errorCheckMax ? 'errorInput' : ''} type="number"
-                                                  value={this.props.maxVal}/>
-                                Start value: <input className={this.state.errorCheckMin ? 'errorInput' : ''}
-                                                    type="number" value={this.props.minVal}/>
+                                <table className="tableInDisplay">
+                                    <tr>
+                                        <td>
+                                            <span
+                                                className="errorInInputs">{this.state.errorCheckMax ? this.state.error : 'Max value:'}</span>
+                                            <input className={this.state.errorCheckMax ? 'errorInput' : ''}
+                                                   type="number"
+                                                   value={this.props.maxVal}/></td>
+                                        <td><span
+                                            className="errorInInputs">{this.state.errorCheckMin ? this.state.error : 'Start value:'}</span>
+                                            <input className={this.state.errorCheckMin ? 'errorInput' : ''}
+                                                   type="number" value={this.props.minVal}/></td>
+                                    </tr>
+                                </table>
                             </form>
                         </div> :
                         display

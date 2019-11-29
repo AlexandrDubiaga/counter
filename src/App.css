@@ -62,3 +62,15 @@ input{
     border: 2px solid red;
 
 }
+.errorInInputs{
+    font-size: 50px;
+    color: red;
+    height: 20px;
+}
+.tableInDisplay td{
+    width: 300px;
+
+}
+.tableInDisplay{
+    margin-left: 100px;
+}
