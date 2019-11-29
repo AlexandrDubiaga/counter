@@ -58,3 +58,7 @@ input{
 .SET{
     margin-top: 100px;
 }
+.errorInput{
+    border: 2px solid red;
+
+}

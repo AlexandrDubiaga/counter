@@ -9,7 +9,8 @@ class App extends React.Component {
         isDisabled: false,
         maxVal: 5,
         minVal: 0,
-        setVisibleSettings:false
+        setVisibleSettings:false,
+        isVisibleSetInDisplay:false
     }
 
     incrementCounter = () => {
@@ -42,6 +43,15 @@ class App extends React.Component {
             counter:this.state.minVal
         })
     }
+    disableSetIfError=(valueMax,valueMin)=>{
+        if(valueMax){
+            this.setState({isVisibleSetInDisplay:true})
+        }else if(valueMin){
+            this.setState({isVisibleSetInDisplay:true})
+        }else{
+            this.setState({isVisibleSetInDisplay:false})
+        }
+    }
 
 
     render() {
@@ -49,10 +59,10 @@ class App extends React.Component {
             <div className="App">
                 <div className="Wrapper">
                     <div className="Display">
-                        <Display changeStartMaxValue={this.changeStartMaxValue} setVisibleSettings={this.state.setVisibleSettings} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}/>
+                        <Display disableSetIfError={this.disableSetIfError} changeStartMaxValue={this.changeStartMaxValue} setVisibleSettings={this.state.setVisibleSettings} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}/>
                     </div>
                     <div>
-                        <Controls className="Controls" setVisibleSettings={this.state.setVisibleSettings} setFunc={this.setFunc} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}
+                        <Controls isVisibleSetInDisplay={this.state.isVisibleSetInDisplay} className="Controls" setVisibleSettings={this.state.setVisibleSettings} setFunc={this.setFunc} counter={this.state.counter} maxVal={this.state.maxVal} minVal={this.state.minVal}
                                   isDisabled={this.state.isDisabled} incrementCounter={this.incrementCounter}
                                   resetCounter={this.resetCounter}/>
                     </div>

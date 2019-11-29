@@ -28,7 +28,7 @@ class Controls extends React.Component {
             <div >
                 {this.props.setVisibleSettings ?
                     <div>
-                        <button className="SET" onClick={() => buttons[2].onFunc(false)}>SET</button>
+                        <button disabled={this.props.isVisibleSetInDisplay} className="SET" onClick={() => buttons[2].onFunc(false)}>SET</button>
                     </div> :
                     <div className="Buttons"><Btn {...this.props} button={buttons[0]}/>
                         <Btn {...this.props} button={buttons[1]}/>
